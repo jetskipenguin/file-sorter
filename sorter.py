@@ -1,7 +1,7 @@
 import shutil
 import os
 
-source = r'C:\Users\colli\Downloads'
+source = os.getcwd()
 source_files = [file for file in os.listdir(source)]
 
 # sorts file endings into folders
