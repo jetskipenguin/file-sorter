@@ -1,41 +1,40 @@
 import shutil
 import os
 
-source = r'X:\Downloads'
+source = r'C:\Users\colli\Downloads'
+source_files = [file for file in os.listdir(source)]
 
 # sorts file endings into folders
 img = ['png', 'jpg', 'gif', 'jpeg', 'psd', 'tif']
-img_folder = 'Image Files'
+img_folder = source + "\\Image Files"
 
 compressed = ['zip', 'rar', '7z']
-compressed_folder = 'Compressed Files'
+compressed_folder = source + "\\Compressed Files"
 
 exe = ['exe', 'jar', 'msi']
-exe_folder = 'Executable Files'
+exe_folder = source + "\\Exe Files"
 
 pdf = ['pdf']
-pdf_folder = "PDF Files"
+pdf_folder = source + "\\PDF Files"
 
 document = ['txt', 'docx', 'rtf', 'xlsx', 'ppt', 'log']
-document_folder = 'Doc Files'
+document_folder = source + "\\Documents"
 
 media = ['mp4', 'mp3']
-media_folder = 'Media Files'
+media_folder = source + "\\Media Files"
 
 
 # returns a list of duplicate files
-def get_duplicates(path1, path2):
-    file_list1 = [file for file in os.listdir(path1)]
-    file_list2 = [file for file in os.listdir(path2)]
+def get_duplicates(path):
+    file_list2 = [file for file in os.listdir(path)]
     duplicate_list = []
 
-    for x in file_list1:
+    for x in source_files:
         for y in file_list2:
             if x == y:
                 duplicate_list.append(x)
 
     return duplicate_list
-
 
 # allows for renaming of files in duplicate_list
 def rename_duplicates(list1):
@@ -43,24 +42,49 @@ def rename_duplicates(list1):
         new_name = input('Rename {} to a name not already taken (include file extension):\n'.format(i))
         os.rename(source + '\\' + i, source + '\\' + new_name)
 
+# creates necessary folders
+if(img_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(img_folder)
+    print("Created Image Folder")
+
+if(compressed_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(compressed_folder)
+    print("Created Compressed Files Folder")
+
+if(exe_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(exe_folder)
+    print("Created Exe Folder")
+
+if(pdf_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(pdf_folder)
+    print("Created PDF Folder")
+
+if(document_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(document_folder)
+    print("Created Documents Folder")
+
+if(media_folder.replace(source, '').strip('\\') not in source_files):
+    os.mkdir(media_folder)
+    print("Created Media Folder")
+
 
 # checks for duplicates in each folder and prompts the user to rename
-img_dupes = get_duplicates(source, source + '\\' + img_folder)
+img_dupes = get_duplicates(img_folder)
 rename_duplicates(img_dupes)
 
-compressed_dupes = get_duplicates(source, source + '\\' + compressed_folder)
+compressed_dupes = get_duplicates(compressed_folder)
 rename_duplicates(compressed_dupes)
 
-exe_dupes = get_duplicates(source, source + '\\' + exe_folder)
+exe_dupes = get_duplicates(exe_folder)
 rename_duplicates(exe_dupes)
 
-pdf_dupes = get_duplicates(source, source + '\\' + pdf_folder)
+pdf_dupes = get_duplicates(pdf_folder)
 rename_duplicates(pdf_dupes)
 
-document_dupes = get_duplicates(source, source + '\\' + document_folder)
+document_dupes = get_duplicates(document_folder)
 rename_duplicates(document_dupes)
 
-media_dupes = get_duplicates(source, source + '\\' + media_folder)
+media_dupes = get_duplicates(media_folder)
 rename_duplicates(media_dupes)
 
 img_count = 0
