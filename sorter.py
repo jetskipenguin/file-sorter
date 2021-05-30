@@ -98,32 +98,32 @@ media_count = 0
 for file in os.listdir(source):
     for i in img:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + img_folder)
+            shutil.move(file, img_folder)
             img_count += 1
 
     for i in compressed:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + compressed_folder)
+            shutil.move(file, compressed_folder)
             compressed_count += 1
 
     for i in exe:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + exe_folder)
+            shutil.move(file, exe_folder)
             exe_count += 1
 
     for i in pdf:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + pdf_folder)
+            shutil.move(file, pdf_folder)
             pdf_count += 1
 
     for i in document:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + document_folder)
+            shutil.move(file, document_folder)
             document_count += 1
 
     for i in media:
         if file.endswith(i):
-            shutil.move(file, source + '\\' + media_folder)
+            shutil.move(file, media_folder)
             media_count += 1
 
 print('Successfully moved {} image files'.format(img_count))
