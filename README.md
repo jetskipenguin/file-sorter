@@ -2,5 +2,4 @@
 
 Just place in your directory of choice and run
 
-You can easily change out some of the file extensions by modifying the lists
-located above the folder variables
+You can easily customize output by creating new folder objects. Just pass in a list of file extensions and a name for the future folder
