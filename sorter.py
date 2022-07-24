@@ -56,7 +56,6 @@ for folder in folders:
     duplicates.append(folder.check_duplicates())
 
 # prompts user input to rename dupes
-print(duplicates)
 count = 0
 for file in duplicates:
     if file:
