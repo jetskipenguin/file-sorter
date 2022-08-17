@@ -2,18 +2,19 @@ import shutil
 import os
 
 source = os.getcwd()
+source_files = [file for file in os.listdir(source)]
 
 class folder:
     # creates class attributes
     def __init__(self, files, name):
         self.count = 0
-        self.files = [file for file in os.listdir(source)]
+        self.files = files
         self.name = name
         self.path = source + "\\" + name
 
     # creates folder if it does not exist
     def check_folder(self):
-        if(self.path.replace(source, '').strip('\\') not in self.files):
+        if(self.path.replace(source, '').strip('\\') not in source_files):
             os.mkdir(self.name)
             print("Created {} Folder".format(self.name))
 
@@ -32,7 +33,7 @@ class folder:
         return duplicate_list
     
     def move_files(self):
-        for file in os.listdir(source):
+        for file in source_files:
             for i in self.files:
                 if(file.endswith(i)):
                     shutil.move(file, self.path)
@@ -44,7 +45,7 @@ folders = []
 folders.append(folder(['png', 'jpg', 'gif', 'jpeg', 'psd', 'tif', 'jfif'], "Image Files"))
 folders.append(folder(['zip', 'rar', '7z'], "Compressed Files"))
 folders.append(folder(['exe', 'jar', 'msi'], "Exe Files"))
-folders.append(folder(['pdf'], "PDF Files"))
+folders.append(folder(['pdf', 'epub'], "PDF Files"))
 folders.append(folder(['txt', 'docx', 'rtf', 'xlsx', 'ppt', 'log', 'pptx'], "Documents"))
 folders.append(folder(['mp4', 'mp3'], "Media Files"))
 
@@ -55,7 +56,7 @@ for folder in folders:
     folder.check_folder()
     duplicates.append(folder.check_duplicates())
 
-# prompts user input to rename dupes
+# auto renames duplicate file names
 count = 0
 for file in duplicates:
     if file:
