@@ -42,11 +42,11 @@ class folder:
 folders = []
 
 # adds folder objects to folders list
-folders.append(folder(['png', 'jpg', 'gif', 'jpeg', 'psd', 'tif', 'jfif'], "Image Files"))
+folders.append(folder(['png', 'jpg', 'gif', 'jpeg', 'psd', 'tif', 'jfif', 'JPEG'], "Image Files"))
 folders.append(folder(['zip', 'rar', '7z'], "Compressed Files"))
 folders.append(folder(['exe', 'jar', 'msi'], "Exe Files"))
 folders.append(folder(['pdf', 'epub'], "PDF Files"))
-folders.append(folder(['txt', 'docx', 'rtf', 'xlsx', 'ppt', 'log', 'pptx'], "Documents"))
+folders.append(folder(['txt', 'docx', 'rtf', 'xlsx', 'ppt', 'log', 'pptx', 'doc', 'xls'], "Documents"))
 folders.append(folder(['mp4', 'mp3'], "Media Files"))
 
 duplicates = []
